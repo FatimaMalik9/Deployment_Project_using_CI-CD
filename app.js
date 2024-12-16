@@ -12,7 +12,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Connect to Database
 const DB_URL = process.env.DB_URL
-mongoose.connect(DB_URL)
+mongoose.connect('DB_URL')
   .then(() => {
     console.log('MongoDB connected');
   })
