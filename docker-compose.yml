@@ -1,13 +1,29 @@
 version: '3.8'
 
+# services:
+#   healthcare-app:
+#     build: .
+#     container_name: healthcare_app
+#     ports:
+#       - "3000:3000"
+#     volumes:
+#       - .:/usr/src/app
+#       - /usr/src/app/node_modules
+#     environment:
+#       - DB_URL=mongodb://mongo:27017/healthcare 
 services:
+  mongo:
+    image: mongo
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+
   healthcare-app:
-    build: .
-    container_name: healthcare_app
+    build:
+      context: .
     ports:
       - "3000:3000"
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
     environment:
       - DB_URL=mongodb://mongo:27017/healthcare
+    depends_on:
+      - mongo
