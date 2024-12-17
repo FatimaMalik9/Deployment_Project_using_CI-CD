@@ -13,7 +13,7 @@ services:
     # ports:
     #   - "3000:3000"
     environment:
-      - DB_URL=mongodb://mongo:27017/healthcare
+      - DB_URL="mongodb+srv://fatimaumer107:5e4ZzPFmupQxsJfj@cluster0.sjhyz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     depends_on:
       - mongo
 
