@@ -11,10 +11,11 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Connect to Database
-const DB_URL = process.env.DB_URL
-mongoose.connect('DB_URL')
+const DB_URL = process.env.DB_URL || 'mongodb://mongo:27017/healthcare';
+
+mongoose.connect(DB_URL)
   .then(() => {
-    console.log('MongoDB connected');
+    console.log('MongoDB connected',process.env.DB_URL);
   })
   .catch(err => {
     console.error('Database connection failed:', err.message);
