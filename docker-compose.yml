@@ -1,20 +1,13 @@
 version: '3.8'
- 
-services:
-  mongo:
-    image: mongo
-    container_name: mongo-db
-    ports:
-      - "27017:27017"
 
+services:
   healthcare-app:
-    build:
-      context: .
-    # ports:
-    #   - "3000:3000"
+    build: .
+    image: health-app
+    ports:
+      - "3000:3000"
     environment:
-      - DB_URL="mongodb+srv://fatimaumer107:5e4ZzPFmupQxsJfj@cluster0.sjhyz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-    depends_on:
-      - mongo
+      - NODE_ENV=production
+      - DB_URL="mongodb+srv://fatimaumer107:5e4ZzPFmupQxsJfj@cluster0.sjhyz.mongodb.net/healthcare?retryWrites=true&w=majority&appName=Cluster0"
 
       
