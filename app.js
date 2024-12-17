@@ -11,7 +11,8 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Connect to Database
-const DB_URL = process.env.DB_URL || 'mongodb://mongo:27017/healthcare';
+// const DB_URL = process.env.DB_URL || 'mongodb://mongo:27017/healthcare';
+const DB_URL = "mongodb+srv://fatimaumer107:5e4ZzPFmupQxsJfj@cluster0.sjhyz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose.connect(DB_URL)
   .then(() => {
@@ -38,6 +39,11 @@ app.use('/reports', reportRoutes);
 
 
 // Start the server
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+// app.listen(3000, () => {
+//   console.log('Server is running on port 3000');
+// });
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

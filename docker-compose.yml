@@ -10,8 +10,8 @@ services:
   healthcare-app:
     build:
       context: .
-    ports:
-      - "3000:3000"
+    # ports:
+    #   - "3000:3000"
     environment:
       - DB_URL=mongodb://mongo:27017/healthcare
     depends_on:
