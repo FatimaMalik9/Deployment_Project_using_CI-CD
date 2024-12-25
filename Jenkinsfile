@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        SSH_KEY_PATH = 'C:\\Users\\PC\\Downloads\\cicd-key.pem'
+        SSH_KEY_PATH = 'D:\\cicd-key.pem'
         SSH_USER = 'ec2-user'
         SSH_HOST = '3.95.226.166'
     }
@@ -23,8 +23,10 @@ pipeline {
         }
         stage('Push image') {
             steps {
-                bat 'docker login -u fatimamalik1 -p fatima2939'
-                bat 'docker push fatimamalik1/healthapp:latest'
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    bat 'echo %DOCKER_PASS%| docker login -u %DOCKER_USER% --password-stdin'
+                    bat 'docker push fatimamalik1/healthapp:latest'
+                }
             }
         }
         stage('Deploy') {
