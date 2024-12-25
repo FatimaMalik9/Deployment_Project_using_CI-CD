@@ -1,23 +1,11 @@
 version: '3.8'
 
 services:
-<<<<<<< HEAD
   backend:
   build:
+  image: health-app:latest
   ports:
     - "3000:3000"
   environment:
     - MONGO_URI=mongodb://mongo:27017/myDB?connectTimeoutMS=30000
     - NODE_ENV=development  
-=======
-  healthcare-app:
-    build: .
-    image: health-app
-    ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV=production
-      - DB_URL="mongodb+srv://fatimaumer107:5e4ZzPFmupQxsJfj@cluster0.sjhyz.mongodb.net/healthcare?retryWrites=true&w=majority&appName=Cluster0"
-
-      
->>>>>>> d215d02553de1d6c8caf3b2cfdffdf89c01cc78f
