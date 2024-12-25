@@ -1,20 +1,10 @@
 version: '3.8'
- 
+
 services:
-  mongo:
-    image: mongo
-    container_name: mongo-db
-    ports:
-      - "27017:27017"
-
-  healthcare-app:
-    build:
-      context: .
-    ports:
-      - "3000:3000"
-    environment:
-      - DB_URL=mongodb://mongo:27017/healthcare
-    depends_on:
-      - mongo
-
-      
+  backend:
+  build:
+  ports:
+    - "3000:3000"
+  environment:
+    - MONGO_URI=mongodb://mongo:27017/myDB?connectTimeoutMS=30000
+    - NODE_ENV=development  

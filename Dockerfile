@@ -1,20 +1,12 @@
-# Base image for Node.js
-FROM node:18.18.0
+FROM node:18
 
-# Set working directory
 WORKDIR /usr/src/app
+COPY package.json ./
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
+RUN npm install
 
-# Install dependencies
-RUN npm install --production
-
-# Copy the rest of the application code
 COPY . .
 
-# Expose the application port
 EXPOSE 3000
 
-# Start the application
 CMD ["npm", "start"]
