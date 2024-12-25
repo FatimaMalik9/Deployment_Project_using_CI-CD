@@ -21,18 +21,16 @@ pipeline {
                 bat 'docker tag health-app fatimamalik1/healthapp:latest'
             }
         }
-        stage('Push image') {
+        stage('Push Image') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                    bat 'echo %DOCKER_PASS%| docker login -u %DOCKER_USER% --password-stdin'
-                    bat 'docker push fatimamalik1/healthapp:latest'
-                }
+                bat 'docker login -u fatimamalik1 -p fatima2939'
+                bat 'docker push fatimamalik1/healthapp:latest'
             }
         }
         stage('Deploy') {
             steps {
                 bat """
-                ssh -i ${SSH_KEY_PATH} -o StrictHostChecking=no ${SSH_USER}@${SSH_HOST} 'echo Deploy command here'
+                ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} 'echo Deploy command here'
                 """
             }
         }
