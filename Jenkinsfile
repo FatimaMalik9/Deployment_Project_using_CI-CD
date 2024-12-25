@@ -37,7 +37,7 @@ pipeline {
                 docker rm health-app || true
                 docker rmi fatimamalik1/healthapp:latest || true
                 docker pull fatimamalik1/healthapp:latest
-                docker run --name health-app -p 3000:3000 fatimamalik1/healthapp:latest
+                docker run -d --name health-app -p 3000:3000 fatimamalik1/healthapp:latest
                 """
             }
         }
