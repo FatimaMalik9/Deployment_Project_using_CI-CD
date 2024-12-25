@@ -23,10 +23,8 @@ pipeline {
         }
         stage('Push image') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                    bat 'echo %DOCKER_PASS%| docker login -u %DOCKER_USER% --password-stdin'
-                    bat 'docker push fatimamalik1/healthapp:latest'
-                }
+                bat 'docker login -u fatimamalik1 -p fatima2939'
+                bat 'docker push fatimamalik1/healthapp:latest'
             }
         }
         stage('Deploy') {
