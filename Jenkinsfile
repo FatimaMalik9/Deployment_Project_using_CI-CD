@@ -11,11 +11,11 @@ pipeline{
                         bat 'docker-compose build'
                   }
             }
-            stage('Tag image'){
-                  steps{
-                        bat 'docker tag health-app fatimamalik/healthapp:latest'
-                  }
-            }
+            // stage('Tag image'){
+            //       steps{
+            //             bat 'docker tag health-app fatimamalik/healthapp:latest'
+            //       }
+            // }
             // stage('Push image'){
             //       steps{
             //             bat 'docker login -u fatimamalik1 fatima460417'
