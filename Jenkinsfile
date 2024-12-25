@@ -3,7 +3,7 @@ pipeline{
       stages {
             stage('checkout'){
                   steps{
-                        git branch: 'main', uri: 'file:///D:/New%20folder%20233/Project/Healthcare' 
+                        git branch: 'main', url: 'file:///D:/New%20folder%20233/Project/Healthcare' 
                   }
             }
             stage('Build'){
