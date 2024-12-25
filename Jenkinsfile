@@ -1,9 +1,5 @@
 pipeline{
       agent any        //agent is machine where we run our pipeline
-
-      environment {
-
-      }
       stages {
             stage('checkout'){
                   steps{
