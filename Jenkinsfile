@@ -31,10 +31,13 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                // Corrected the multiline command for Windows batch script
-                bat script: """
+                bat """
                 ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} ^ 
-                "docker stop health-app || true && docker rm health-app || true ^&^& docker rmi fatimamalik1/healthapp:latest && docker pull fatimamalik1/healthapp:latest && docker run --name health-app -p 3000:3000 fatimamalik1/healthapp:latest"
+                docker stop health-app || true
+                docker rm health-app || true
+                docker rmi fatimamalik1/healthapp:latest || true
+                docker pull fatimamalik1/healthapp:latest
+                docker run --name health-app -p 3000:3000 fatimamalik1/healthapp:latest
                 """
             }
         }
